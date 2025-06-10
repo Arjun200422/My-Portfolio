@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nagarjun M - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 0.8rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            object-fit: cover;
+        }
+
+        nav h1 {
+            font-size: 2rem;
+            font-style: normal;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.4rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+        }
+
+        section {
+            padding: 5rem 0;
+            width: 100%;
+            margin: 0;
+            margin-top: 5rem;
+        }
+
+        #home {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: #fff;
+            padding: 8rem 2rem;
+            margin-top: 4rem;
+        }
+
+        #home .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        #home .image-container {
+            position: relative;
+            width: 350px; 
+            height: 350px;
+        }
+
+        #home .image-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fff, #d1e8ff);
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        #home img {
+            position: relative;
+            width: 350px; 
+            height: 350px; 
+            border-radius: 50%;
+            border: 5px solid;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            z-index: 2;
+        }
+
+        #home img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #home .text-content {
+            flex: 1;
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #home p {
+            font-size: 1.5rem;
+        }
+
+        #about {
+            background: #fff;
+            padding: 8rem;
+            text-align: center;
+        }
+
+        #about .content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+        }
+
+        #about .content p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: left;
+            flex: 1;
+        }
+
+        #skills {
+            background: #ecf0f1;
+            padding: 8rem;
+            text-align: center;
+        }
+
+        #skills .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 3fr));
+            gap: 2rem;
+            margin-top: 1rem;
+            padding: 0 2rem;
+        }
+
+        .skill-item {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            color: #2c3e50;
+            transition: transform 0.3s;
+            font-size: 1.4rem;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        #projects {
+            background: #ecf0f1;
+            padding: 7rem;
+            text-align: center;
+        }
+
+        #projects .content {
+            max-width: 1350px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            padding: 1 3rem;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .project-card p {
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        #contact {
+            background: #fff;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 1.3rem;
+        }
+
+        #contact a {
+            font-size: 1.3rem;
+        }
+
+        #about h2, #skills h2, #projects h2, #contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            position: relative;
+            display: inline-block;
+            padding: 0 2rem;
+        }
+
+        #about h2::after, #skills h2::after, #projects h2::after, #contact h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #3498db;
+        }
+
+        #contact a {
+            display: inline-block;
+            margin: 0.5rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2c3e50;
+            color: #fff;
+            width: 100%;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .nav-left {
+                gap: 0.5rem;
+            }
+
+            .profile-img {
+                width: 40px;
+                height: 40px;
+            }
+
+            nav h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul li a {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            #home .content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            #home .image-container {
+                width: 250px; 
+                height: 250px; 
+                margin-bottom: 2rem;
+            }
+
+            #home img {
+                width: 250px; 
+                height: 250px; 
+            }
+
+            #home h1 {
+                font-size: 2.5rem;
+            }
+
+            #home p {
+                font-size: 1.2rem;
+            }
+
+            #about .content {
+                flex-direction: column;
+                text-align: center;
+                margin-left: 0;
+            }
+
+            #about .content p {
+                text-align: center;
+                font-size: 1.2rem;
+            }
+
+            .skills-grid, .project-grid {
+                padding: 0 1rem;
+            }
+
+            #about .content, #skills .content, #projects .content {
+                max-width: 90%;
+            }
+
+            .skill-item {
+                font-size: 1.2rem;
+            }
+
+            .project-card p {
+                font-size: 1.1rem;
+            }
+
+            .project-card h3 {
+                font-size: 1.2rem;
+            }
+
+            #contact p, #contact a {
+                font-size: 1.1rem;
+            }
+
+            #about h2, #skills h2, #projects h2, #contact h2 {
+                font-size: 2.2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            footer p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQFXZ0GWlWLybg/profile-displayphoto-shrink_800_800/B56ZPdu_B9H0Ag-/0/1734591903833?e=1754524800&v=beta&t=CY7G8pmsVSM2cybtQSEH0QPgKwl97_AGYcCBzKvCtro" alt="Profile Picture" class="profile-img">
+                <h1>NAGARJUN M</h1>
+            </div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="content">
+            <div class="image-container">
+                <div class="image-background"></div>
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQFXZ0GWlWLybg/profile-displayphoto-shrink_800_800/B56ZPdu_B9H0Ag-/0/1734591903833?e=1754524800&v=beta&t=CY7G8pmsVSM2cybtQSEH0QPgKwl97_AGYcCBzKvCtro" alt="Profile Picture">
+            </div>
+            <div class="text-content">
+                <h1>Hi, I'm Nagarjun</h1>
+                <p>Computer Science Student | Web Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <div class="content">
+            <p>I’m a passionate and motivated Computer Science student with a strong interest in software development and problem-solving.
+                As a beginner developer, I am building my foundation in programming languages such as Python, Java, and C, while also exploring web development using HTML, CSS, JavaScript and React. I enjoy learning through hands-on projects and am always eager to take on new challenges that help me grow both technically and personally.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>My Skills</h2>
+        <div class="content">
+            <div class="skills-grid">
+                <div class="skill-item">HTML5</div>
+                <div class="skill-item">CSS3</div>
+                <div class="skill-item">JavaScript</div>
+                <div class="skill-item">React</div>
+                <div class="skill-item">Python</div>
+                <div class="skill-item">Git</div>
+                <div class="skill-item">Java</div>
+                <div class="skill-item">MySQL</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="content">
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="https://vmedulife.com/wp-content/uploads/2024/07/image-39.png" alt="Project 1">
+                    <h3>Hostel Management System</h3>
+                    <p>Manages hostel operations like room allocation, fee tracking, and complaints with an efficient, user-friendly web-based application.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://miro.medium.com/v2/resize:fit:1400/1*NRHmmFqALVkPk4FzlZhI-g.png" alt="Project 2">
+                    <h3>AI-Powered Summarizer</h3>
+                    <p>Summarizes text and audio using AI models like Whisper and LongT5, offering extractive and abstractive summarization with evaluation metrics.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://media.licdn.com/dms/image/v2/D4E12AQEJqpLkXUEv6g/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1683572275722/e=3572275722&v=beta&t=9-BzFIPNFuF1KA_RzASAnbVfSvHODYnez21bMYbIT-Q" alt="Project 3">
+                    <h3>Scientific Misinformation Detection</h3>
+                    <p>Detects misinformation in scientific papers using machine learning and social network analysis, focusing on citation patterns and content verification.</p>
+                </div>
+                <div class="project-card">
+                    <img src="https://www.shutterstock.com/shutterstock/videos/3565361557/thumb/10.jpg?ip=x480" alt="Project 4">
+                    <h3>Mental Health Prediction</h3>
+                    <p>Predicts mental health issues like stress or depression using survey data and machine learning models for early risk identification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out to me!</p>
+        <p>Email: <a href="mailto:arjun200422@gmail.com">arjun200422@gmail.com</a></p>
+        <p>LinkedIn: <a href="http://www.linkedin.com/in/nagarjun-m-62247b2a2" target="_blank">NAGARJUN M</a></p>
+        <p>GitHub: <a href="https://github.com/Arjun200422" target="_blank">Arjun200422</a></p>
+    </section>
+
+    <footer>
+        <p>© 2025 Arjun. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
